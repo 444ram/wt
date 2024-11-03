@@ -1,27 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Cookie with User IDs and Passwords</title>
-</head>
-<body>
-    <h1>Set User Credentials in Cookie</h1>
-    <button onclick="setUserCredentialsCookie()">Set Cookie</button>
+// CookieServlet.java
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.PrintWriter;
 
-    <script>
-        function setUserCredentialsCookie() {
-            const userCredentials = [
-                { userId: "user1", password: "pass1" },
-                { userId: "user2", password: "pass2" },
-                { userId: "user3", password: "pass3" },
-                { userId: "user4", password: "pass4" }
-            ];
+@WebServlet("/setCookies")
+public class CookieServlet extends HttpServlet {
 
-            // Store as JSON string in cookie
-            document.cookie = "userCredentials=" + JSON.stringify(userCredentials) + "; path=/";
-            alert("User credentials cookie set!");
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+            throws ServletException, IOException {
+
+        // Sample user IDs and passwords
+        String[] userIds = {"user1", "user2", "user3", "user4"};
+        String[] passwords = {"pass1", "pass2", "pass3", "pass4"};
+
+        // Create cookies for each user ID and password
+        for (int i = 0; i < userIds.length; i++) {
+            String cookieValue = userIds[i] + ":" + passwords[i]; // format: userId:password
+            Cookie cookie = new Cookie("user" + (i + 1), cookieValue);
+            cookie.setMaxAge(60 * 60 * 24); // 1 day
+            response.addCookie(cookie);
         }
-    </script>
-</body>
-</html>
+
+        // Response to confirm cookies have been set
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+        out.println("<h1>Cookies Set</h1>");
+        out.println("<p>User IDs and passwords have been added to cookies.</p>");
+    }
+}
+
+
+            <!-- web.xml -->
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee" 
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
+          http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+          version="3.1">
+
+    <servlet>
+        <servlet-name>CookieServlet</servlet-name>
+        <servlet-class>CookieServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>CookieServlet</servlet-name>
+        <url-pattern>/setCookies</url-pattern>
+    </servlet-mapping>
+
+</web-app>
