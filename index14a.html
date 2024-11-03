@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Cookie with User IDs and Passwords</title>
+</head>
+<body>
+    <h1>Set User Credentials in Cookie</h1>
+    <button onclick="setUserCredentialsCookie()">Set Cookie</button>
+
+    <script>
+        function setUserCredentialsCookie() {
+            const userCredentials = [
+                { userId: "user1", password: "pass1" },
+                { userId: "user2", password: "pass2" },
+                { userId: "user3", password: "pass3" },
+                { userId: "user4", password: "pass4" }
+            ];
+
+            // Store as JSON string in cookie
+            document.cookie = "userCredentials=" + JSON.stringify(userCredentials) + "; path=/";
+            alert("User credentials cookie set!");
+        }
+    </script>
+</body>
+</html>

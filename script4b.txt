@@ -1,0 +1,5 @@
+function loadData() {
+    const content = document.getElementById("content");
+    const info = content.getAttribute("data-info");
+    content.innerText = info;
+}

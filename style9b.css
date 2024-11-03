@@ -1,0 +1,21 @@
+html {
+    font-size: 16px; /* Base size for rem units */
+}
+
+.header {
+    font-size: 2rem; /* Scales with root font size */
+    padding: 20px;
+    text-align: center;
+    background-color: #333;
+    color: white;
+}
+
+.section {
+    font-size: 1.5em; /* Relative to parent element */
+    padding: 2%; /* Responsive padding */
+    margin: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 8px;
+    text-align: center;
+}

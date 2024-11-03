@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Pop-Ups</title>
+</head>
+<body>
+    <h1>JavaScript Pop-Up Box Examples</h1>
+    
+    <!-- Date Display Example -->
+    <label for="dateTextbox">Display Date:</label>
+    <input type="text" id="dateTextbox" readonly>
+    <button onclick="displayDate()">Display Date</button>
+    
+    <!-- Buttons to trigger other functions -->
+    <button onclick="calculateFactorial()">Calculate Factorial</button>
+    <button onclick="showMultiplicationTable()">Multiplication Table</button>
+    <button onclick="sumNumbers()">Sum Numbers</button>
+
+    <script>
+        // (a) Display the current date in a textbox
+        function displayDate() {
+            const dateTextbox = document.getElementById('dateTextbox');
+            dateTextbox.value = new Date().toLocaleDateString();
+        }
+
+        // (b) Calculate factorial of a number and display it using alert
+        function calculateFactorial() {
+            const n = prompt("Enter a number to find its factorial:");
+            if (n !== null) {
+                let factorial = 1;
+                for (let i = 1; i <= n; i++) {
+                    factorial *= i;
+                }
+                alert("Factorial of " + n + " is: " + factorial);
+            }
+        }
+
+        // (c) Display multiplication table for a number using alert
+        function showMultiplicationTable() {
+            const n = prompt("Enter a number to get its multiplication table:");
+            if (n !== null) {
+                let table = "Multiplication Table for " + n + ":\n";
+                for (let i = 1; i <= 10; i++) {
+                    table += n + " x " + i + " = " + (n * i) + "\n";
+                }
+                alert(table);
+            }
+        }
+
+        // (d) Sum of numbers from 1 to n with confirm to add another number
+        function sumNumbers() {
+            let n = parseInt(prompt("Enter the number up to which you want the sum:"));
+            let sum = (n * (n + 1)) / 2; // Sum of the first n numbers
+
+            if (confirm("Would you like to add another number to the sum?")) {
+                let extraNum = parseInt(prompt("Enter the number to add to the sum:"));
+                sum += extraNum;
+            }
+
+            alert("The total sum is: " + sum);
+        }
+    </script>
+</body>
+</html>

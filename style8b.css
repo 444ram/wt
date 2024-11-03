@@ -1,0 +1,56 @@
+/* Basic Styles */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
+.pricing-container {
+    display: flex;
+    gap: 20px;
+}
+
+.pricing-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    width: 150px;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.pricing-card button {
+    margin-top: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+}
+
+/* Dynamic Styling with Pseudo-Classes */
+.pricing-card:hover {
+    transform: scale(1.05);
+    background-color: #f0f0f0;
+}
+
+.pricing-card:nth-child(2) {
+    border-color: #4CAF50;
+}
+
+.pricing-card:nth-child(2):hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.pricing-card:nth-child(3) {
+    border-color: #ff9800;
+}
+
+.pricing-card:nth-child(3):hover {
+    background-color: #ff9800;
+    color: white;
+}

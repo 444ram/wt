@@ -1,0 +1,54 @@
+/* Basic Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+header, footer {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}
+
+section {
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* Media Queries */
+@media (min-width: 600px) {
+    main {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    section {
+        flex: 1 1 calc(50% - 20px);
+    }
+}
+
+@media (min-width: 900px) {
+    main {
+        gap: 40px;
+    }
+    section {
+        flex: 1 1 calc(33% - 40px);
+    }
+}

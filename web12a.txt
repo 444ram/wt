@@ -1,0 +1,19 @@
+<web-app>
+    <servlet>
+        <servlet-name>ConfigContextServlet</servlet-name>
+        <servlet-class>ConfigContextServlet</servlet-class>
+        <init-param>
+            <param-name>exampleParam</param-name>
+            <param-value>ServletConfig Example</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ConfigContextServlet</servlet-name>
+        <url-pattern>/ConfigContextServlet</url-pattern>
+    </servlet-mapping>
+    
+    <context-param>
+        <param-name>globalParam</param-name>
+        <param-value>ServletContext Example</param-value>
+    </context-param>
+</web-app>

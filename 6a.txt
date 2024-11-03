@@ -1,0 +1,30 @@
+<!ELEMENT books (book+)> 
+<!ELEMENT book (title, author, isbn, publisher, edition, price)> 
+<!ELEMENT title (#PCDATA)> 
+<!ELEMENT author (#PCDATA)> 
+<!ELEMENT isbn (#PCDATA)> 
+<!ELEMENT publisher (#PCDATA)> 
+<!ELEMENT edition (#PCDATA)> 
+<!ELEMENT price (#PCDATA)>
+
+<?xml version="1.0" encoding="UTF-8"?> 
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"> 
+<xs:element name="books"> 
+    <xs:complexType> 
+      <xs:sequence> 
+        <xs:element name="book" maxOccurs="unbounded"> 
+          <xs:complexType> 
+            <xs:sequence> 
+              <xs:element name="title" type="xs:string"/> 
+              <xs:element name="author" type="xs:string"/> 
+              <xs:element name="isbn" type="xs:string"/> 
+              <xs:element name="publisher" type="xs:string"/> 
+              <xs:element name="edition" type="xs:integer"/> 
+              <xs:element name="price" type="xs:decimal"/> 
+            </xs:sequence> 
+          </xs:complexType> 
+        </xs:element> 
+      </xs:sequence> 
+    </xs:complexType> 
+  </xs:element> 
+</xs:schema>

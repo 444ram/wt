@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE books SYSTEM "books.dtd"> 
+<books> 
+  <book> 
+    <title>Book Title</title> 
+    <author>Author Name</author> 
+    <isbn>1234567890</isbn> 
+<publisher>Publisher Name</publisher> 
+<edition>1</edition> 
+<price>29.99</price> 
+</book> 
+</books>

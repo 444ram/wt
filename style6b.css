@@ -1,0 +1,36 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.animated-box {
+    width: 150px;
+    height: 150px;
+    background-color: #4CAF50;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    font-size: 18px;
+    transition: transform 0.3s;
+    animation: colorChange 3s infinite;
+}
+
+.animated-box:hover {
+    transform: scale(1.1) rotate(10deg);
+}
+
+@keyframes colorChange {
+    0% { background-color: #4CAF50; }
+    50% { background-color: #3e8e41; }
+    100% { background-color: #4CAF50; }
+}

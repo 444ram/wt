@@ -1,0 +1,16 @@
+/* Typography */
+.custom-header {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+}
+
+/* Buttons */
+.btn-custom {
+    background-color: #0066cc;
+    color: white;
+    border-radius: 4px;
+}
+
+.btn-custom:hover {
+    background-color: #004d99;
+}

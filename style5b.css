@@ -1,0 +1,21 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 20px;
+}
+
+.box {
+    flex: 1 1 200px;
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    border-radius: 8px;
+}

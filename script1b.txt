@@ -1,0 +1,26 @@
+function addTask() {
+    const taskInput = document.getElementById("taskInput");
+    const taskText = taskInput.value.trim();
+
+    if (taskText) {
+        const taskList = document.getElementById("taskList");
+        const li = document.createElement("li");
+        li.textContent = taskText;
+
+        // Mark as completed
+        li.addEventListener("click", function () {
+            li.style.textDecoration = li.style.textDecoration === "line-through" ? "none" : "line-through";
+        });
+
+        // Remove task
+        const removeBtn = document.createElement("button");
+        removeBtn.textContent = "Remove";
+        removeBtn.onclick = function () {
+            taskList.removeChild(li);
+        };
+
+        li.appendChild(removeBtn);
+        taskList.appendChild(li);
+        taskInput.value = "";
+    }
+}
