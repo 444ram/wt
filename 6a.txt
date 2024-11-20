@@ -28,3 +28,27 @@
     </xs:complexType> 
   </xs:element> 
 </xs:schema>
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE library [
+    <!ELEMENT library (book+)>
+    <!ELEMENT book (title, author, year, price)>
+    <!ELEMENT title (#PCDATA)>
+    <!ELEMENT author (#PCDATA)>
+    <!ELEMENT year (#PCDATA)>
+    <!ELEMENT price (#PCDATA)>
+]>
+<library>
+    <book>
+        <title>Effective Java</title>
+        <author>Joshua Bloch</author>
+        <year>2008</year>
+        <price>45.99</price>
+    </book>
+    <book>
+        <title>Clean Code</title>
+        <author>Robert C. Martin</author>
+        <year>2008</year>
+        <price>39.99</price>
+    </book>
+</library>
