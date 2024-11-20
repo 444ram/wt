@@ -1,0 +1,101 @@
+import javax.servlet.*;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.*;
+import java.io.*;
+
+@WebServlet("/cookieExample")
+public class CookieExampleServlet extends HttpServlet {
+    
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Set content type for the response
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+        
+        // User data: storing IDs and passwords as comma-separated values
+        String userData = "user1:password1,user2:password2,user3:password3,user4:password4";
+        
+        // Create a cookie to store the user data
+        Cookie userCookie = new Cookie("userData", userData);
+        
+        // Set the cookie's expiration time to 1 hour (3600 seconds)
+        userCookie.setMaxAge(3600);  // Cookie will expire in 1 hour
+        
+        // Add the cookie to the response
+        response.addCookie(userCookie);
+        
+        // Display a message
+        out.println("<html><body>");
+        out.println("<h2>Cookie Created with User IDs and Passwords!</h2>");
+        out.println("<p>The cookie contains the following user data:</p>");
+        out.println("<pre>" + userData + "</pre>");
+        out.println("</body></html>");
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Retrieve the cookies from the request
+        Cookie[] cookies = request.getCookies();
+        String userData = "No cookie found";
+        
+        // If cookies exist, find the "userData" cookie and get its value
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals("userData")) {
+                    userData = cookie.getValue();
+                    break;
+                }
+            }
+        }
+        
+        // Set content type for the response
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+        
+        // Display the retrieved cookie data
+        out.println("<html><body>");
+        out.println("<h2>Cookie Data Retrieved:</h2>");
+        out.println("<p>" + userData + "</p>");
+        out.println("</body></html>");
+    }
+}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to My Web App</title>
+</head>
+<body>
+    <h1>Welcome to My Web Application!</h1>
+    <p>Click <a href="/YourWebApp/cookieExample">here</a> to go to the Cookie Example servlet.</p>
+</body>
+</html>
+
+
+
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+                             http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" 
+         version="3.0">
+
+    <servlet>
+        <servlet-name>UserInfo</servlet-name>
+        <servlet-class>UserInfo</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>UserInfo</servlet-name>
+        <url-pattern>/userInfo</url-pattern>
+    </servlet-mapping>
+
+</web-app>
