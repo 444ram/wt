@@ -65,5 +65,101 @@ public class HelloServlet extends HttpServlet {
     }
 }
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Form</title>
+</head>
+<body>
+    <h2>User Information Form</h2>
+    <form action="userInfo" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+        
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required><br><br>
+        
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
+
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.PrintWriter;
+
+/**
+ * Servlet implementation class UserInfoServlet
+ */
+@WebServlet("/UserInfo")  // Maps the servlet to "/UserInfo"
+public class UserInfo extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public UserInfo() {
+        super();
+        // Default constructor
+    }
+
+    /**
+     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+     */
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Here, you can add code to handle GET requests, if needed.
+        // For now, we'll focus on POST.
+        response.getWriter().append("GET method is not supported. Please use POST to submit data.");
+    }
+
+    /**
+     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+     */
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Retrieve form parameters sent via POST
+        String name = request.getParameter("name");
+        String age = request.getParameter("age");
+
+        // Set the response content type
+        response.setContentType("text/html");
+
+        // Get the PrintWriter object to send the response
+        PrintWriter out = response.getWriter();
+
+        // Start HTML response content
+        out.println("<html><body>");
+        out.println("<h2>Welcome, " + name + "!</h2>");
+        out.println("<p>Your age is " + age + " years.</p>");
+        out.println("</body></html>");
+    }
+}
+
+
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+                             http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" 
+         version="3.0">
+
+    <servlet>
+        <servlet-name>UserInfo</servlet-name>
+        <servlet-class>UserInfo</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>UserInfo</servlet-name>
+        <url-pattern>/userInfo</url-pattern>
+    </servlet-mapping>
+
+</web-app>
+
+
 
 
